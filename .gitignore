@@ -1,0 +1,21 @@
+.env
+.env.yaml #variables for google coud
+
+# OS generated files #
+.DS_Store
+__MACOSX
+# Jupiter Notebook #
+.pytest_cache
+__pycache__
+*checkpoint.ipynb
+*.ipynb_checkpoints
+
+# inteliJ #
+.idea
+*.gz
+*PKG-INFO
+*.egg-info
+*.csv
+*.zip
+# IDE #
+*.vscode
