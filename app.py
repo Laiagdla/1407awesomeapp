@@ -32,3 +32,32 @@ if our_button:
         Streamlit elements injected inside of this block of code will \
         not get displayed unless it is checked
         ''')
+
+
+clicked = st.button('click me')
+
+st.write(clicked)
+
+if clicked:
+    st.write('🎊 surprice!!!! 🥳🎉🎉🎉')
+else:
+    st.write('what you waiting for?')
+
+st.markdown("---")
+
+with st.form(key='params for api'):
+
+    x = st.slider('value for x',1,100, 1)
+    y = st.slider('value for y',1,100, 1)
+
+    st.form_submit_button("Submit")
+
+params= {'x':x, 'y':y}
+st.write(params)
+url="localhost:8000/calculator"
+
+response = requests.get(url, params=params)
+st.write(response.url)
+st.write(response.json())
+
+    # st.write(response.json())

@@ -22,8 +22,9 @@ def hello():
 def simplecalculator(x: int, y: int):
     return x + y
 
-# response = request.get("http://127.0.0.1:8000/calculator?x=5&y=10")
+# this two lines of code are equivalent, but requests.get and api is making us able to run code over the internet
 # calculated_value = simplecalculator(x, y)
+# response = requests.get("http://127.0.0.1:8000/calculator?x=5&y=10").json()
 
 #------------ testing on terminal --------------
 if __name__ == "__main__":
