@@ -1,3 +1,14 @@
+default: load_env, run_api
+
+# check direnv
+load_env:
+	direnv allow .
+
+check_env:
+	@for variable in $$(grep -oP '^[A-Za-z_]+\=' .env | grep -oP '^[A-Za-z_]+'); do \
+		echo "$$variable: $$(printenv | grep -oP \"^$$variable=\\K.*\")"; \
+	done
+
 run_api:
 	uvicorn awesomeapp.simpleapi:api --port=5050 --reload
 
@@ -39,7 +50,7 @@ push:
 ############# deploy to Google cloud Run #################################3
 deploy:
 	gcloud run deploy --image ${GCP_REGION}-docker.pkg.dev/${GCP_PROJECT}/${GAR_REPO}/${GAR_IMAGE}:prod \
-	--memory ${GAR_MEMORY} --region ${GCP_REGION} --env-vars-file .env.yaml --allow-unauthenticated
+	--memory ${GAR_MEMORY} --region ${GCP_REGION} --env-vars-file .env.yaml
 
 
 ############ manage Google Cloud Run #####################################3
