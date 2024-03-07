@@ -10,20 +10,20 @@ check_env:
 	done
 
 run_api:
-	uvicorn awesomeapp.simpleapi:api --port=5050 --reload
+	uvicorn ${GAR_IMAGE}.simpleapi:api --port=${PORT} --reload
 
 run_st:
 	streamlit run app.py
 
 ############### build and run locally ####################3
 build-local:
-	docker build -t dummyapp:dev .
+	docker build -t ${GAR_IMAGE}:dev .
 
 run-local:
-	docker run -p 8000:8000 --env-file .env dummyapp:dev
+	docker run -p {PORT}:{PORT} --env-file .env ${GAR_IMAGE}:dev
 
 run-interactive:
-	docker run -it -p 8000:8000 --env-file .env dummyapp:dev sh
+	docker run -it -p {PORT}:{PORT} --env-file .env ${GAR_IMAGE}:dev sh
 
 
 
